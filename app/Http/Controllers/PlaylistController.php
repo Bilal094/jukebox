@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 
-class GenreController extends Controller
+class PlaylistController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Genre::all();
-        return view("genre.index", ['genres' => $data]);
+        $playlists = Playlist::all();
+        return view('playlist.index',['playlists' =>$playlists]);
     }
 
     /**
@@ -21,7 +21,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view('genre.create');
+        return view('playlist.create');
     }
 
     /**
@@ -29,21 +29,16 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation
-        $validate= $request->validate([
-            'genreName' => 'required|max:255',
+        Playlist::create([
+            'name' => $request['name']
         ]);
-
-        Genre::create([
-            "name" => $request['genreName']
-        ]);
-        return redirect(route('genre.index'));
+        return redirect(route('playlist.index'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Genre $genre)
+    public function show(Playlist $playlist)
     {
         //
     }
@@ -51,7 +46,7 @@ class GenreController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Genre $genre)
+    public function edit(Playlist $playlist)
     {
         //
     }
@@ -59,7 +54,7 @@ class GenreController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Genre $genre)
+    public function update(Request $request, Playlist $playlist)
     {
         //
     }
@@ -67,9 +62,9 @@ class GenreController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Genre $genre)
+    public function destroy(Playlist $playlist)
     {
-        Genre::destroy($genre->id);
-        return redirect(route('genre.index'));
+        PLaylist::destroy($playlist->id);
+        return redirect(route('playlist.index'));
     }
 }
