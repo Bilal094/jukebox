@@ -29,6 +29,10 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
+        $validate = $request->validate([
+            'name' => 'required'
+        ]);
+        
         Playlist::create([
             'name' => $request['name']
         ]);

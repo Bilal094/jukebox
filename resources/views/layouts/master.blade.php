@@ -7,12 +7,14 @@
 </head>
 <body>
     <nav>
-        <li><a href="{{route('master')}}">Home</a></li>
-        <li><a href="{{route('genre.index')}}">Genres</a></li>
+        <a href="{{route('master')}}">Home</a>
+        <a href="{{route('genre.index')}}">Genres</a>
+        <a href="{{route('song.index')}}">Songs</a>
+        <a href="{{route('playlist.index')}}">Playlists</a>
+        <a href="">Log in/Register</a>
     </nav>
-<main>
+
     @yield('content')
-    Home pagina
-</main>
+
 </body>
 </html>

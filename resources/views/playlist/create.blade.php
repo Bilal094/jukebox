@@ -11,6 +11,9 @@
     <h1>Add a Playlist</h1>
     <form method="POST" action="{{route('playlist.store')}}">
         @csrf
+        @error('name')
+        <div class="error">Vul a.u.b de naam van de playlist in!</div>
+        @enderror
         <label>Vul een naam voor het playlist in</label>
         <input name="name" type="text">
         <input type="submit" value="Send me!">

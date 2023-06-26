@@ -1,12 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Songs - Index</title>
-</head>
+@extends('layouts.master')
+@section('content')
 <body>
     <h1>Dit is een totaaloverzicht van alle Songs</h1>
     <ul>
@@ -18,4 +11,4 @@
 
     <a href="{{route('song.create')}}">Create a song</a>
 </body>
-</html>
+@endsection
