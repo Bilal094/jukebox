@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         // Create an instance of the GenreSeeder
         $this->call([
+            SongSeeder::class,
             GenreSeeder::class
         ]);
     }

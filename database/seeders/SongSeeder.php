@@ -5,10 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Faker\Factory as Faker;
 
-class GenreSeeder extends Seeder
+class SongSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,9 +16,13 @@ class GenreSeeder extends Seeder
     {
         $faker = Faker::create();
         foreach(range(1,10) as $index) {
-            DB::table('genres')->insert([
-                'name' => $faker->name
+            DB::table('songs')->insert([
+                'name' => $faker->name,
+                'author' => $faker->name,
+                'releasedate' => '2023-06-29',
+                'duration' => 30
             ]);
         }
+
     }
 }

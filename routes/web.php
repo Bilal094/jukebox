@@ -45,8 +45,13 @@ Route::get('/song/create', [SongController::class, 'create'])->name('song.create
 Route::post('/song/store', [SongController::class, 'store'])->name('song.store');
 Route::get('/song/destroy/{song}', [SongController::class, 'destroy'])->name('song.destroy');
 
-Route::get('/playlist/index', [PlaylistController::class, 'index'])->middleware('auth')->name('playlist.index');
-Route::get('/playlist/create', [PlaylistController::class, 'create'])->middleware('auth')->name('playlist.create');
-Route::post('/playlist/store', [PlaylistController::class, 'store'])->middleware('auth')->name('playlist.store');
-Route::get('/playlist/destroy/{playlist}', [PlaylistController::class, 'destroy'])->middleware('auth')->name('playlist.destroy');
+Route::middleware('auth')->group(function () {
+    Route::get('/playlist/index', [PlaylistController::class, 'index'])->name('playlist.index');
+    Route::get('/playlist/create', [PlaylistController::class, 'create'])->name('playlist.create');
+    Route::post('/playlist/store', [PlaylistController::class, 'store'])->name('playlist.store');
+    Route::get('/playlist/edit', [PlaylistController::class, 'edit'])->name('playlist.edit');
+    Route::get('/playlist/update', [PlaylistController::class, 'update'])->name('playlist.update');
+    Route::get('/playlist/destroy/{playlist}', [PlaylistController::class, 'destroy'])->name('playlist.destroy');
+});
+
 require __DIR__.'/auth.php';
