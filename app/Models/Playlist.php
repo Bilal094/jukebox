@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Playlist extends Model
 {
@@ -11,7 +12,12 @@ class Playlist extends Model
     use HasFactory;
 
 
-    public function songs(){
+    public function songs()
+    {
         return $this->belongsToMany(Song::class);
+    }
+
+    public function user() {
+        return $this->belongsToOne(User::class);
     }
 }

@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/login', function() {
+    return view('login');
+})->name('profile.login');
+
 Route::get("/genre/index", [GenreController::class, 'index'])->name('genre.index');
 Route::get("/genre/create", [GenreController::class, 'create'])->name('genre.create');
 Route::post("/genre/store", [GenreController::class, 'store'])->name('genre.store');

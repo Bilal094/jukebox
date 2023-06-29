@@ -44,7 +44,11 @@ class PlaylistController extends Controller
      */
     public function show(Playlist $playlist)
     {
-        //
+        $user = Auth::user();
+        if ($user) {
+            $data = $user->playlists;
+            return view('playlist/index', ['data' => $data]);
+        }
     }
 
     /**
