@@ -42,7 +42,7 @@ class PlaylistController extends Controller
         ]);
         
         $playlist = $user->playlists()->create([
-            'name' => $request['name']
+            'name' => $request['name'],
         ]);
         return redirect(route('playlist.index'));
     }
@@ -60,15 +60,30 @@ class PlaylistController extends Controller
      */
     public function edit(Playlist $playlist)
     {
-        return view('playlist.edit', ['songs' => DB::table('songs')->get()]);
+        return view('playlist.edit', [
+          'playlist' => $playlist,
+          'songs' => DB::table('songs')->get(),
+          'addedSongs' => $playlist->songs()->get()
+        ]);
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Playlist $playlist)
     {
-        //
+        if ($request['namePlaylist']) {
+            $playlist->name = $request['namePlaylist'];
+            $playlist->save();
+        }
+
+        $selectedSong = intval($request['song']);
+        if ($selectedSong) {
+            $attached = $playlist->songs()->attach($selectedSong);
+        }
+        $sumDuration = $playlist->songs()->sum('duration');
+        return redirect(route('playlist.index', ['sumDuration' => $sumDuration]));
     }
 
     /**
