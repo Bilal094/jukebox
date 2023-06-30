@@ -15,8 +15,7 @@
             <div class="error">Vul a.u.b een genre naam in!</div>
         @enderror
         <input name="genreName" type="text">
-        <input type="submit" value="Toepassen">
-        <a href="{{route('genre.index')}}">Terug</a>
+        <input type="submit" value="Send me!">
     </form>
 </body>
 </html>

@@ -42,6 +42,12 @@
         <input name="duration" type="number">
         <br>
 
+        <select name="genreSelect">
+            @foreach($genres as $genre)
+                <option value="{{$genre->id}}">{{$genre->name}}</option>
+            @endforeach
+        </select>
+
         <input type="submit" value="Send me!">
     </form>
 </body>

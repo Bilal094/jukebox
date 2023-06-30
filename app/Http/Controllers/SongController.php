@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SongController extends Controller
 {
@@ -21,7 +22,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        return view('song.create');
+        return view('song.create', ['genres' => DB::table('genres')->get()]);
     }
 
     /**
@@ -37,6 +38,11 @@ class SongController extends Controller
             'duration' => 'required'
         ]);
 
+        $selectedGenre = intval($request['genreSelect']);
+        if ($selectedGenre) {
+            $attached = $song->genre()->attach($selectedGenre);
+        }
+
         Song::create([
             'name' => $request['name'],
             'author' => $request['author'],
@@ -51,7 +57,8 @@ class SongController extends Controller
      */
     public function show(song $song)
     {
-        //
+
+        return view('song.view', ['song' => $song, 'genre' => $song->genre()->first()]);
     }
 
     /**
