@@ -6,6 +6,7 @@ use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Song;
 
 
 class PlaylistController extends Controller
@@ -52,7 +53,7 @@ class PlaylistController extends Controller
      */
     public function show(Playlist $playlist)
     {
-        //
+        return view('playlist.view', ['playlist' => $playlist,'addedSongs' => $playlist->songs()->get()]);
     }
 
     /**
@@ -66,7 +67,6 @@ class PlaylistController extends Controller
           'addedSongs' => $playlist->songs()->get()
         ]);
     }
-    
 
     /**
      * Update the specified resource in storage.
@@ -87,11 +87,20 @@ class PlaylistController extends Controller
     }
 
     /**
+     * Detach song from playlist
+     */
+     public function detach(Playlist $playlist, Song $song)
+     {
+        $playlist->songs()->detach($song->id);
+        return redirect(route('playlist.index'));
+     }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Playlist $playlist)
     {
-        PLaylist::destroy($playlist->id);
+        Playlist::destroy($playlist->id);
         return redirect(route('playlist.index'));
     }
 }

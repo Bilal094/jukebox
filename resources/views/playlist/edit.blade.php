@@ -4,7 +4,7 @@
     <h1>Bewerk playlist</h1>
     <h3>Toegevoegde liedjes in playlist:</h3>
     @foreach($addedSongs as $addedSong)
-        <li>{{$addedSong->name}} <a href="">X</a></li> 
+        <li>{{$addedSong->name}} <a href="{{route('playlist.detach', ['playlist' => $playlist->id, 'song' => $addedSong->id])}}">Verwijder</a></li> 
     @endforeach 
 
     <form method="POST" action="{{ route('playlist.update', ['playlist' => $playlist->id]) }}">
