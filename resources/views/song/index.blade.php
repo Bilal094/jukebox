@@ -4,7 +4,7 @@
     <h1>Dit is een totaaloverzicht van alle Songs</h1>
     <ul>
     @foreach($songs as $song)
-        <li><a href="{{route('song.view', ['song' => $song->id])}}">{{$song->name}}</a> <a href="{{route('song.destroy', ['song' => $song->id])}}">X</a></li>
+        <li>{{$song->name}}<a href="{{route('song.view', ['song' => $song->id])}}">Weergeven</a> <a href="{{route('song.destroy', ['song' => $song->id])}}">X</a></li>
 
     @endforeach
     </ul>
