@@ -38,7 +38,7 @@
             <br>
             <div class="error">Vul a.u.b de duur van het liedje in!</div>
         @enderror
-        <label>Vul een duratie voor het liedje in</label>
+        <label>Vul een duratie voor het liedje in (seconden)</label>
         <input name="duration" type="number">
         <br>
 

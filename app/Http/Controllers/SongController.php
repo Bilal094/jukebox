@@ -38,17 +38,18 @@ class SongController extends Controller
             'duration' => 'required'
         ]);
 
-        $selectedGenre = intval($request['genreSelect']);
-        if ($selectedGenre) {
-            $attached = $song->genre()->attach($selectedGenre);
-        }
-
-        Song::create([
+        $song = Song::create([
             'name' => $request['name'],
             'author' => $request['author'],
             'releasedate' => $request['releasedate'],
             'duration' => $request['duration'],
         ]);
+
+        $selectedGenre = intval($request['genreSelect']);
+        if ($selectedGenre) {
+            $attached = $song->genre()->associate($selectedGenre);
+        }
+
         return redirect(route('song.index'));
     }
 
