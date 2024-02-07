@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 <body>
-    <nav class="mainNav">
+    <!-- <nav class="mainNav">
     @if (Auth::check())
         <a href="{{ route('dashboard') }}">Home</a>
         <a href="{{route('playlist.index')}}">Playlists</a>
@@ -15,7 +15,7 @@
     @endif
         <a href="{{route('genre.index')}}">Genres</a>
         <a href="{{route('song.index')}}">Songs</a>
-    </nav>
+    </nav> -->
 
     @if(request()->is('/'))
         <!-- Session Status -->

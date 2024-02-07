@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+<a href="/dashboard">< Ga terug</a>
+
 <h1>Dit is een totaaloverzicht van alle Genres</h1>
     <ul>
     @foreach($genres as $genre)

@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+<a href="/dashboard">< Ga terug</a>
+
 <body>
     <h1>Dit is een totaaloverzicht van alle Songs</h1>
     <ul>

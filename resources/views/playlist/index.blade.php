@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <body>
+    <a href="/dashboard">< Ga terug</a>
     <h1>Dit is een totaaloverzicht van alle Playlists</h1>
     <h3>Klik op een playlist om de details te zien of om het te bewerken</h3>
         <ul>
