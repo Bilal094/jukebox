@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts/master');
-})->name('master');
+    return view('layouts/auth');
+})->name('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,9 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/login', function() {
-    return view('login');
-})->name('profile.login');
+// Route::get('/login', function() {
+//     return view('auth');
+// })->name('profile.login');
 
 Route::get("/genre/index", [GenreController::class, 'index'])->name('genre.index');
 Route::get("/genre/create", [GenreController::class, 'create'])->name('genre.create');

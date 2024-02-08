@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
+@section('content')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song genres</title>
+    <title>Genres</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 <body>
@@ -15,8 +15,8 @@
             <div class="error">Vul a.u.b een genre naam in!</div>
         @enderror
         <input name="genreName" type="text">
-        <input type="submit" value="Toepassen">
-        <a href="{{route('genre.index')}}">Terug</a>
+        <input type="submit" value="Toepassen" class="border border-gray-500 rounded p-1">
+        <a href="{{route('genre.index')}}" class="border border-gray-500 rounded p-1">Terug</a>
     </form>
 </body>
-</html>
+@endsection

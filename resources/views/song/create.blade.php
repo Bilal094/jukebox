@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.master')
+@section('content')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -48,7 +48,7 @@
             @endforeach
         </select>
 
-        <input type="submit" value="Send me!">
+        <input type="submit" value="Toepassen" class="border border-gray-500 rounded p-1">
     </form>
 </body>
-</html>
+@endsection
